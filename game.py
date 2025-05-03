@@ -1,9 +1,21 @@
+import pygame
 class Game:
-    def __init__(self, win,  player=1, background=1):
+    def __init__(self, win,  player, background: pygame.Surface):
         self.win = win
         self.player = player
         self.background = background
+        self.run = True
 
     def update_loop(self):
-        self.win.blit(self.background, (0,0))
+        pygame.time.delay(50)
+        for eve in pygame.event.get():
+            if eve.type == pygame.QUIT:
+                self.run = False
+            if eve.type == pygame.KEYDOWN:
+                if eve.key == pygame.K_a:
+                    self.player.left()
+                if eve.ey == pygame.K_d:
+                    self.player.right()
+
+        self.win.blit(self.background, (0, 0))
         self.player.update()
