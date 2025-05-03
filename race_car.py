@@ -8,10 +8,11 @@ class RaceCar:
         self.y = y
         self.sprite = sprite
         self.napravlenie = napravlenie
+        self.speed = 0
 
         self.spritelist = [self.sprite]
         for i in range(3):
-            sprite = pygame.transform.rotate(sprite, 90)
+            sprite = pygame.transform.rotate(sprite, -90)
             self.spritelist.append(sprite)
 
     def right(self):
@@ -21,14 +22,18 @@ class RaceCar:
 
     def left(self):
         self.napravlenie -= 1
-        if self.napravlenie == 0:
-            self.napravlenie = 4
-        
+        if self.napravlenie == -1:
+            self.napravlenie = 3
+    def gas(self):
+        self.speed += 1
 
     def draw(self):
-        self.win.blit(self.sprite, (self.x, self.y))
+        xoffset, yoffset= self.spritelist[self.napravlenie].get_size()
+        xoffset, yoffset = xoffset//2, yoffset//2
+        self.win.blit(self.spritelist[self.napravlenie], (self.x-xoffset, self.y-yoffset))
 
     def update(self):
+        self.x += self.speed
         self.draw()
 
 

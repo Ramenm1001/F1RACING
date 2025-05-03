@@ -14,8 +14,11 @@ class Game:
             if eve.type == pygame.KEYDOWN:
                 if eve.key == pygame.K_a:
                     self.player.left()
-                if eve.ey == pygame.K_d:
+                if eve.key == pygame.K_d:
                     self.player.right()
+                if eve.key == pygame.K_w:
+                    self.player.gas()
 
         self.win.blit(self.background, (0, 0))
         self.player.update()
+        pygame.display.update()
