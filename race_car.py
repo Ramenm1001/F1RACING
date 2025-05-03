@@ -2,16 +2,28 @@ import pygame.transform
 
 
 class RaceCar:
-    def __init__(self, win, x, y, sprite):
+    def __init__(self, win, x, y, sprite, napravlenie=0):
         self.win = win
         self.x = x
         self.y = y
         self.sprite = sprite
+        self.napravlenie = napravlenie
 
         self.spritelist = [self.sprite]
         for i in range(3):
             sprite = pygame.transform.rotate(sprite, 90)
             self.spritelist.append(sprite)
+
+    def right(self):
+        self.napravlenie += 1
+        if self.napravlenie == 4:
+            self.napravlenie = 0
+
+    def left(self):
+        self.napravlenie -= 1
+        if self.napravlenie == 0:
+            self.napravlenie = 4
+        
 
     def draw(self):
         self.win.blit(self.sprite, (self.x, self.y))
