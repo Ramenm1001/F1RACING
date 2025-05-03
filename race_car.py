@@ -1,9 +1,17 @@
+import pygame.transform
+
+
 class RaceCar:
     def __init__(self, win, x, y, sprite):
         self.win = win
         self.x = x
         self.y = y
         self.sprite = sprite
+
+        self.spritelist = [self.sprite]
+        for i in range(3):
+            sprite = pygame.transform.rotate(sprite, 90)
+            self.spritelist.append(sprite)
 
     def draw(self):
         self.win.blit(self.sprite, (self.x, self.y))
