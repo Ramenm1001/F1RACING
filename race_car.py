@@ -1,6 +1,5 @@
 import pygame.transform
 
-
 class RaceCar:
     def __init__(self, win, x, y, sprite, napravlenie=0):
         self.win = win

@@ -1,4 +1,5 @@
 import pygame
+
 class Game:
     def __init__(self, win,  player, background: pygame.Surface):
         self.win = win
