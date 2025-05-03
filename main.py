@@ -1,11 +1,19 @@
 import pygame
+from game import Game
+from race_car import RaceCar
 
+START_POS = (50, 50)
 
 win = pygame.display.set_mode((750, 500))
 
+# загрузка ресурсов
 car = pygame.image.load("sprites/yellow_car.png").convert_alpha()
 car = pygame.transform.scale(car, (50, 25))
+background = pygame.image.load("sprites/track_background.png").convert_alpha()
 
+player = RaceCar(win, *START_POS, car)
+
+game = Game(win, player, background)
 run = True
 while run:
     pygame.time.delay(50)
@@ -13,9 +21,6 @@ while run:
         if eve.type == pygame.QUIT:
             run = False
 
-    win.fill((0, 0, 77))
-    win.blit(car, (50, 50))
-    # for some in island:
-    #    some.update()
+    game.update_loop()
     pygame.display.update()
 pygame.quit()

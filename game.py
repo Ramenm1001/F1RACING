@@ -5,6 +5,5 @@ class Game:
         self.background = background
 
     def update_loop(self):
-
-        self.background.draw()
+        self.win.blit(self.background, (0,0))
         self.player.update()
