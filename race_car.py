@@ -1,6 +1,9 @@
 class RaceCar:
-    def __init__(self):
-        pass
+    def __init__(self, win, x, y, sprite):
+        self.win = win
+        self.x = x
+        self.y = y
+        self.sprite = sprite
 
     def draw(self):
         pass
