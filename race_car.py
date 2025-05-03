@@ -6,17 +6,19 @@ class RaceCar:
         self.sprite = sprite
 
     def draw(self):
-        pass
+        self.win.blit(self.sprite, (self.x, self.y))
 
     def update(self):
-        pass
+        self.draw()
 
 
 if __name__ == "__main__":
     import pygame
 
     win = pygame.display.set_mode((500, 500))
-    car = RaceCar()  # машина
+    car_sprite = pygame.image.load("sprites/yellow_car.png").convert_alpha()
+    car_sprite = pygame.transform.scale(car_sprite, (50, 25))
+    car = RaceCar(win, 50, 50, car_sprite)  # машина
     run = True
     while run:
         pygame.time.delay(50)
