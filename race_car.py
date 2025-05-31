@@ -1,3 +1,5 @@
+import math
+
 import pygame.transform
 
 class RaceCar:
@@ -5,8 +7,7 @@ class RaceCar:
         self.win = win
         self.x = x
         self.y = y
-
-
+        self.vector_angle = 0
 
         self.sprite = sprite
         self.napravlenie = napravlenie
@@ -41,12 +42,13 @@ class RaceCar:
         # self.win.blit(self.spritelist[self.napravlenie], (50-xoffset, 50-yoffset))
 
     def update(self):
+        x_speed = math.cos(self.vector_angle)
+        y_speed = math.sin(self.vector_angle)
 
-
-        if self.x + self.speed > 750 - self.X_RAMKA:
-            self.x_camera += self.speed
+        if self.x + x_speed > 750 - self.X_RAMKA:
+            self.x_camera += x_speed
         else:
-            self.x += self.speed
+            self.x += x_speed
         self.draw()
 
 if __name__ == "__main__":
