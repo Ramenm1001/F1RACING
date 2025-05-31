@@ -47,8 +47,6 @@ class RaceCar:
         y_speed = math.sin(self.vector_angle)
         if self.x + x_speed > 750 - self.X_RAMKA:
             self.x_camera += x_speed
-
-
         if self.x + self.speed > 750 - self.X_RAMKA:
             self.x_camera += self.speed
         elif self.x + self.speed < 0 + self.X_RAMKA:
@@ -57,9 +55,9 @@ class RaceCar:
             self.x += x_speed
         self.draw()
 
+
 if __name__ == "__main__":
     import pygame
-
     win = pygame.display.set_mode((500, 500))
     car_sprite = pygame.image.load("sprites/yellow_car.png").convert_alpha()
     car_sprite = pygame.transform.scale(car_sprite, (50, 25))
