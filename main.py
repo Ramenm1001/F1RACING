@@ -2,7 +2,7 @@ import pygame
 from game import Game
 from race_car import RaceCar
 
-START_POS = (150, 150)
+START_POS = (375, 250)
 
 win = pygame.display.set_mode((750, 500))
 

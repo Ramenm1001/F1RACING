@@ -13,8 +13,8 @@ class RaceCar:
         self.napravlenie = napravlenie
         self.speed = 0
         self.x_camera = 0
-        self.X_RAMKA = 150
-        self.Y_RAMKA = 150
+        self.X_RAMKA = 300
+        self.Y_RAMKA = 300
 
         self.spritelist = []
         for i in range(36):
