@@ -13,7 +13,8 @@ class RaceCar:
         self.napravlenie = napravlenie
         self.speed = 0
         self.x_camera = 0
-        self.X_RAMKA = 0
+        self.X_RAMKA = 150
+        self.Y_RAMKA = 150
 
         self.spritelist = [self.sprite]
         for i in range(3):
@@ -46,6 +47,12 @@ class RaceCar:
         y_speed = math.sin(self.vector_angle)
         if self.x + x_speed > 750 - self.X_RAMKA:
             self.x_camera += x_speed
+
+
+        if self.x + self.speed > 750 - self.X_RAMKA:
+            self.x_camera += self.speed
+        elif self.x + self.speed < 0 + self.X_RAMKA:
+            self.x_camera += self.speed
         else:
             self.x += x_speed
         self.draw()
