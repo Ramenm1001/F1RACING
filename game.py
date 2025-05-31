@@ -30,7 +30,7 @@ class Game:
             self.player.stop()
 
 
-        self.win.blit(self.background, (0-self.player.x_camera, 0-self.player.y))
+        self.win.blit(self.background, (0-self.player.x_camera, 0-self.player.y_camera))
         self.player.update()
 
         if debug:
