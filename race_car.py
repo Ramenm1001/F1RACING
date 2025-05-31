@@ -7,7 +7,7 @@ class RaceCar:
         self.win = win
         self.x = x
         self.y = y
-        self.vector_angle = 0
+        self.napravlenie = 0
 
         self.sprite = sprite
         self.napravlenie = napravlenie
@@ -17,19 +17,20 @@ class RaceCar:
         self.Y_RAMKA = 150
 
         self.spritelist = [self.sprite]
-        for i in range(3):
-            sprite = pygame.transform.rotate(sprite, -90)
+        for i in range(359):
+            sprite = pygame.transform.rotate(sprite, 1)
             self.spritelist.append(sprite)
 
     def right(self):
         self.napravlenie += 1
-        if self.napravlenie == 4:
+        if self.napravlenie == 360:
             self.napravlenie = 0
 
     def left(self):
         self.napravlenie -= 1
         if self.napravlenie == -1:
-            self.napravlenie = 3
+            self.napravlenie = 359
+
     def gas(self):
         self.speed += 1
 
@@ -43,8 +44,8 @@ class RaceCar:
         # self.win.blit(self.spritelist[self.napravlenie], (50-xoffset, 50-yoffset))
 
     def update(self):
-        x_speed = math.cos(self.vector_angle)
-        y_speed = math.sin(self.vector_angle)
+        x_speed = math.cos(self.napravlenie) * self.speed
+        y_speed = math.sin(self.napravlenie) * self.speed
         if self.x + x_speed > 750 - self.X_RAMKA:
             self.x_camera += x_speed
         if self.x + self.speed > 750 - self.X_RAMKA:
