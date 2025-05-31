@@ -12,6 +12,7 @@ class RaceCar:
         self.napravlenie = napravlenie
         self.speed = 0
         self.x_camera = 0
+        self.X_RAMKA = 0
 
         self.spritelist = [self.sprite]
         for i in range(3):
@@ -42,7 +43,7 @@ class RaceCar:
     def update(self):
 
 
-        if self.x + self.speed > 750:
+        if self.x + self.speed > 750 - self.X_RAMKA:
             self.x_camera += self.speed
         else:
             self.x += self.speed
