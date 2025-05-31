@@ -1,5 +1,10 @@
 import pygame
+import math
+pygame.init()
 
+font = pygame.font.Font(None, 32)
+
+debug = True
 class Game:
     def __init__(self, win,  player, background: pygame.Surface):
         self.win = win
@@ -22,6 +27,11 @@ class Game:
                 if eve.key == pygame.K_s:
                     self.player.stop()
 
+
         self.win.blit(self.background, (0-self.player.x_camera, 0-self.player.y))
         self.player.update()
+
+        if debug:
+            txt = font.render(math.cos(self.player.napravlenie) * self.player.speed)
+            self.win.blit(txt, (0, 0))
         pygame.display.update()
