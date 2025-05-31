@@ -16,20 +16,20 @@ class RaceCar:
         self.X_RAMKA = 150
         self.Y_RAMKA = 150
 
-        self.spritelist = [self.sprite]
-        for i in range(359):
-            sprite = pygame.transform.rotate(sprite, 1)
-            self.spritelist.append(sprite)
+        self.spritelist = []
+        for i in range(36):
+            sprite_add = pygame.transform.rotate(sprite, -10 * i)
+            self.spritelist.append(sprite_add)
 
     def right(self):
-        self.napravlenie += 1
+        self.napravlenie += 10
         if self.napravlenie == 360:
             self.napravlenie = 0
 
     def left(self):
-        self.napravlenie -= 1
-        if self.napravlenie == -1:
-            self.napravlenie = 359
+        self.napravlenie -= 10
+        if self.napravlenie == -10:
+            self.napravlenie = 350
 
     def gas(self):
         self.speed += 1
@@ -38,20 +38,19 @@ class RaceCar:
         self.speed -= 1
 
     def draw(self):
-        xoffset, yoffset= self.spritelist[self.napravlenie].get_size()
+        xoffset, yoffset= self.spritelist[self.napravlenie//10].get_size()
         xoffset, yoffset = xoffset//2, yoffset//2
-        self.win.blit(self.spritelist[self.napravlenie], (self.x-xoffset, self.y-yoffset))
+        self.win.blit(self.spritelist[self.napravlenie//10], (self.x-xoffset, self.y-yoffset))
         # self.win.blit(self.spritelist[self.napravlenie], (50-xoffset, 50-yoffset))
 
     def update(self):
-        x_speed = math.cos(self.napravlenie) * self.speed
-        y_speed = math.sin(self.napravlenie) * self.speed
+        x_speed = math.cos(self.napravlenie/57.2958) * self.speed
+        y_speed = math.sin(self.napravlenie/57.2958) * self.speed
+        self.y += y_speed
         if self.x + x_speed > 750 - self.X_RAMKA:
             self.x_camera += x_speed
-        if self.x + self.speed > 750 - self.X_RAMKA:
-            self.x_camera += self.speed
-        elif self.x + self.speed < 0 + self.X_RAMKA:
-            self.x_camera += self.speed
+        elif self.x + x_speed < 0 + self.X_RAMKA:
+            self.x_camera += x_speed
         else:
             self.x += x_speed
         self.draw()
