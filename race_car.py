@@ -8,6 +8,7 @@ class RaceCar:
         self.sprite = sprite
         self.napravlenie = napravlenie
         self.speed = 0
+        self.x_camera = 0
 
         self.spritelist = [self.sprite]
         for i in range(3):
@@ -35,9 +36,13 @@ class RaceCar:
         self.win.blit(self.spritelist[self.napravlenie], (self.x-xoffset, self.y-yoffset))
 
     def update(self):
-        self.x += self.speed
-        self.draw()
 
+
+        if self.x + self.speed > 750:
+            self.x_camera += self.speed
+        else:
+            self.x += self.speed
+        self.draw()
 
 if __name__ == "__main__":
     import pygame
