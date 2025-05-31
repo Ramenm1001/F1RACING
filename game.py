@@ -19,6 +19,8 @@ class Game:
                     self.player.right()
                 if eve.key == pygame.K_w:
                     self.player.gas()
+                if eve.key == pygame.K_s:
+                    self.player.stop()
 
         self.win.blit(self.background, (0-self.player.x, 0-self.player.y))
         self.player.update()

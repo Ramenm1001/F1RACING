@@ -26,6 +26,9 @@ class RaceCar:
     def gas(self):
         self.speed += 1
 
+    def stop(self):
+        self.speed -= 1
+
     def draw(self):
         xoffset, yoffset= self.spritelist[self.napravlenie].get_size()
         xoffset, yoffset = xoffset//2, yoffset//2
