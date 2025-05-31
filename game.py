@@ -22,6 +22,6 @@ class Game:
                 if eve.key == pygame.K_s:
                     self.player.stop()
 
-        self.win.blit(self.background, (0-self.player.x, 0-self.player.y))
+        self.win.blit(self.background, (0-self.player.x_camera, 0-self.player.y))
         self.player.update()
         pygame.display.update()
