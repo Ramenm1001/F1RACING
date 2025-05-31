@@ -20,7 +20,6 @@ class Game:
                 if eve.key == pygame.K_w:
                     self.player.gas()
 
-
-        self.win.blit(self.background, (0, 0))
+        self.win.blit(self.background, (0-self.player.x, 0-self.player.y))
         self.player.update()
         pygame.display.update()
