@@ -35,8 +35,8 @@ class RaceCar:
     def draw(self):
         xoffset, yoffset= self.spritelist[self.napravlenie].get_size()
         xoffset, yoffset = xoffset//2, yoffset//2
-        #self.win.blit(self.spritelist[self.napravlenie], (self.x-xoffset, self.y-yoffset))
-        self.win.blit(self.spritelist[self.napravlenie], (50-xoffset, 50-yoffset))
+        self.win.blit(self.spritelist[self.napravlenie], (self.x-xoffset, self.y-yoffset))
+        # self.win.blit(self.spritelist[self.napravlenie], (50-xoffset, 50-yoffset))
 
     def update(self):
         self.x += self.speed
