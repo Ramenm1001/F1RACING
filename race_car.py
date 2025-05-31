@@ -44,7 +44,6 @@ class RaceCar:
     def update(self):
         x_speed = math.cos(self.vector_angle)
         y_speed = math.sin(self.vector_angle)
-
         if self.x + x_speed > 750 - self.X_RAMKA:
             self.x_camera += x_speed
         else:
